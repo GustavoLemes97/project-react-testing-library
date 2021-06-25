@@ -1,7 +1,5 @@
 import React from 'react';
-import { MemoryRouter, Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import About from '../components/About';
 
 describe('Testes do componente <About.js />', () => {
@@ -40,4 +38,3 @@ describe('Testes do componente <About.js />', () => {
     expect(image.src).toContain('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
 })
-
