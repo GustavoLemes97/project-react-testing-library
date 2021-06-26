@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
 import * as pokedexService from '../services/pokedexService';
 import App from '../App';
 
