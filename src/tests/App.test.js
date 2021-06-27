@@ -5,10 +5,10 @@ import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 
 describe('Testes do componente <App.js />', () => {
-
-  it('Testa se a página principal da Pokédex é renderizada ao carregar a aplicação no caminho de URL `/`', () => {
+  it('Testa se a página principal da Pokédex é'
+  + ' renderizada ao carregar a aplicação no caminho de URL `/`', () => {
     const { getByText } = render(
-      <MemoryRouter initialEntries={['/']}>
+      <MemoryRouter initialEntries={ ['/'] }>
         <App />
       </MemoryRouter>,
     );
@@ -17,9 +17,10 @@ describe('Testes do componente <App.js />', () => {
     expect(homeSubtitle).toBeInTheDocument();
   });
 
-  it('Testa se o topo da aplicação contém um conjunto fixo de links de navegação (Home, About, Favorite Pokémons)', () => {
+  it('Testa se o topo da aplicação contém um'
+  + ' conjunto fixo de links de navegação (Home, About, Favorite Pokémons)', () => {
     const { getByText } = render(
-      <MemoryRouter initialEntries={['/']}>
+      <MemoryRouter initialEntries={ ['/'] }>
         <App />
       </MemoryRouter>,
     );
@@ -32,20 +33,24 @@ describe('Testes do componente <App.js />', () => {
     expect(linkFavorite).toBeInTheDocument();
   });
 
-  it('Teste se a aplicação é redirecionada para a página inicial, na URL / ao clicar no link Home da barra de navegação', () => {
+  it('Teste se a aplicação é redirecionada para'
+  + ' a página inicial, na URL / ao clicar no link Home'
+  + ' da barra de navegação', () => {
     const { getByText } = render(
-      <MemoryRouter initialEntries={['/']}>
+      <MemoryRouter initialEntries={ ['/'] }>
         <App />
       </MemoryRouter>,
     );
     const homeSubtitle = getByText(/Encountered pokémons/i);
     const linkHome = getByText(/Home/i);
-    
+
     fireEvent.click(linkHome);
     expect(homeSubtitle).toBeInTheDocument();
   });
 
-  it('Teste se a aplicação é redirecionada para a página de About, na URL /about, ao clicar no link About da barra de navegação', () => {
+  it('Teste se a aplicação é redirecionada para a'
+  + ' página de About, na URL /about, ao clicar no'
+  + ' link About da barra de navegação', () => {
     const history = createMemoryHistory();
     const { getByText } = render(
       <Router history={ history }>
@@ -53,13 +58,15 @@ describe('Testes do componente <App.js />', () => {
       </Router>,
     );
     const linkAbout = getByText(/About/i);
-    
+
     fireEvent.click(linkAbout);
-    const pathname = history.location.pathname;
+    const { pathname } = history.location;
     expect(pathname).toBe('/about');
   });
 
-  it('Teste se a aplicação é redirecionada para a página de Pokémons Favoritados, na URL /favorites, ao clicar no link Favorite Pokémons da barra de navegação', () => {
+  it('Teste se a aplicação é redirecionada para a página'
+  + ' de Pokémons Favoritados, na URL /favorites, ao clicar'
+  + ' no link Favorite Pokémons da barra de navegação', () => {
     const history = createMemoryHistory();
     const { getByText } = render(
       <Router history={ history }>
@@ -67,27 +74,14 @@ describe('Testes do componente <App.js />', () => {
       </Router>,
     );
     const linkFavorite = getByText(/Favorite Pokémons/i);
-    
+
     fireEvent.click(linkFavorite);
-    const pathname = history.location.pathname;
+    const { pathname } = history.location;
     expect(pathname).toBe('/favorites');
   });
 
-  it('Teste se a aplicação é redirecionada para a página de Pokémons Favoritados, na URL /favorites, ao clicar no link Favorite Pokémons da barra de navegação', () => {
-    const history = createMemoryHistory();
-    const { getByText } = render(
-      <Router history={ history }>
-        <App />
-      </Router>,
-    );
-    const linkFavorite = getByText(/Favorite Pokémons/i);
-    
-    fireEvent.click(linkFavorite);
-    const pathname = history.location.pathname;
-    expect(pathname).toBe('/favorites');
-  });
-
-  it('Teste se a aplicação é redirecionada para a página Not Found ao entrar em uma URL desconhecida', () => {
+  it('Teste se a aplicação é redirecionada para a página'
+  + ' Not Found ao entrar em uma URL desconhecida', () => {
     const history = createMemoryHistory();
     const { getByText } = render(
       <Router history={ history }>
@@ -95,11 +89,9 @@ describe('Testes do componente <App.js />', () => {
       </Router>,
     );
 
-    history.push('/batata')
+    history.push('/batata');
     const notFound = getByText(/Page requested not found/i);
-    
+
     expect(notFound).toBeInTheDocument();
   });
-
-})
-
+});

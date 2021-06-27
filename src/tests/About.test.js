@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import About from '../components/About';
 
 describe('Testes do componente <About.js />', () => {
-
   it('Teste se a página contém as informações sobre a Pokédex', () => {
     const { getByText } = render(<About />);
 
@@ -22,9 +21,13 @@ describe('Testes do componente <About.js />', () => {
 
   it('Teste se a página contém dois parágrafos com texto sobre a Pokédex.', () => {
     const { getByText } = render(<About />);
+    const paragrapheOneText = 'This application simulates a Pokédex,'
+    + ' a digital encyclopedia containing all Pokémons';
+    const paragrapheTwoText = 'One can filter Pokémons by type,'
+    + ' and see more details for each one of them';
 
-    const paragrapheOne = getByText(/This application simulates a Pokédex, a digital encyclopedia containing all Pokémons/i);
-    const paragrapheTwo = getByText(/One can filter Pokémons by type, and see more details for each one of them/i);
+    const paragrapheOne = getByText(paragrapheOneText);
+    const paragrapheTwo = getByText(paragrapheTwoText);
 
     expect(paragrapheOne).toBeInTheDocument();
     expect(paragrapheTwo).toBeInTheDocument();
@@ -37,4 +40,4 @@ describe('Testes do componente <About.js />', () => {
 
     expect(image.src).toContain('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
-})
+});
